@@ -17,7 +17,8 @@ document.getElementById('passwordResetForm').addEventListener('submit', function
         return;
     }
 
-    //alert('Password reset successful for: ' + email);
+    //alert('Password reset successful for: ' + email); za sada zakomentarisan alert
+
     // Simulate form submission
     this.reset();
 });
