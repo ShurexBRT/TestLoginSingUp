@@ -22,3 +22,13 @@ document.getElementById('passwordResetForm').addEventListener('submit', function
     // Simulate form submission
     this.reset();
 });
+// /mnt/data/script.js
+
+document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.querySelector(".hamburger-menu");
+    const navLinks = document.querySelector(".nav-links");
+
+    hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+});
