@@ -1,96 +1,18 @@
 /* /mnt/data/styles.css */
 
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #f9fafc;
-    color: #333;
-}
-
-/* Container Styling */
-.container, .form-container {
-    text-align: center;
-    max-width: 400px;
-    padding: 2rem;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Headings */
-h1, h2 {
-    margin-bottom: 1.5rem;
-    color: #1a73e8;
-}
-
-/* Buttons */
-.button-group .button, button.button {
-    display: inline-block;
-    background: #1a73e8;
-    color: #fff;
-    text-decoration: none;
-    padding: 0.75rem 1.5rem;
-    margin: 0.5rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.button-group .button:hover, button.button:hover {
-    background: #1664c1;
-}
-
-/* Input Fields */
-input {
-    width: 100%;
-    padding: 0.75rem;
-    margin: 0.5rem 0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
-
-input:focus {
-    outline: none;
-    border-color: #1a73e8;
-    box-shadow: 0 0 4px rgba(26, 115, 232, 0.5);
-}
-
-/* Responsive Design */
-@media (max-width: 480px) {
-    body {
-        padding: 1rem;
-    }
-
-    .container, .form-container {
-        width: 100%;
-    }
-
-    /* Error Messages */
-.error {
-    color: red;
-    font-size: 0.875rem;
-    margin-top: -0.5rem;
-    margin-bottom: 0.5rem;
-}
-/* /mnt/data/styles.css */
-
 /* Reset osnovnih stilova */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
+}
+
+/* Popravljen stil za telo stranice */
+body {
+    background: #f9fafc;
+    color: #333;
+    padding-top: 70px; /* Dodajemo padding da sadržaj ne bude ispod navigacije */
 }
 
 /* Stilizacija navigacije */
@@ -129,6 +51,9 @@ input:focus {
 .nav-links {
     list-style: none;
     display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
 }
 
 /* Stilizacija linkova */
@@ -179,17 +104,32 @@ input:focus {
     }
 }
 
-
-/* Responsive Navigation */
-@media (max-width: 768px) {
-    .nav-links {
-        gap: 1rem;
-    }
-
-    .nav-logo {
-        font-size: 1.25rem;
-    }
+/* Dugmad i polja za unos */
+.button {
+    display: inline-block;
+    background: #1a73e8;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
 }
 
+.button:hover {
+    background: #1664c1;
+}
 
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 4px rgba(26, 115, 232, 0.5);
 }
