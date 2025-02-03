@@ -133,3 +133,34 @@ input:focus {
     border-color: #1a73e8;
     box-shadow: 0 0 4px rgba(26, 115, 232, 0.5);
 }
+/* /mnt/data/styles.css */
+
+body {
+    background: #f9fafc;
+    padding-top: 80px; /* Ostavlja prostor ispod fiksne navigacije */
+}
+
+.card {
+    border-radius: 12px;
+}
+
+.btn-primary {
+    background-color: #1a73e8;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #1664c1;
+}
+/* Ograničava širinu input polja */
+.form-control {
+    max-width: 300px;
+    margin: 0 auto; /* Centriranje input polja */
+    display: block;
+}
+
+/* Centriranje forme */
+form {
+    text-align: center;
+}
+
