@@ -426,6 +426,12 @@ body {
     margin: 0 auto;
 }
 
+.redirect-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
 @media (max-width: 991px) {
     .page-header,
     .status-card {
@@ -479,5 +485,9 @@ body {
 
     .pdf-preview-panel iframe {
         height: 360px;
+    }
+
+    .redirect-actions {
+        flex-direction: column;
     }
 }

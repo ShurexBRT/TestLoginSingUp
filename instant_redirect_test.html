@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant Redirect Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="download">
+    <nav class="navbar navbar-expand-lg fixed-top app-nav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="assets/icons/site-icon-64.png" alt="" class="brand-icon">Autofill Test Lab</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="signup.html">Sign Up</a></li>
+                    <li class="nav-item"><a class="nav-link" href="password_reset.html">Reset Password</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="download.html">Download Test</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container page-shell">
+        <section class="form-card redirect-card">
+            <div class="form-heading">
+                <span>PDF</span>
+                <h1>Instant Redirect Test</h1>
+                <p>This is isolated from the main matrix so it cannot trigger while you test the other download cases.</p>
+            </div>
+
+            <div class="test-note">
+                <strong>Heads up:</strong>
+                The button below opens a page that immediately redirects to redirect-target-test.pdf.
+            </div>
+
+            <div class="redirect-actions">
+                <a href="./pdf_redirect.html" class="btn btn-primary">Start Instant Redirect</a>
+                <a href="./download.html" class="btn btn-outline-primary">Back to Download Tests</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
