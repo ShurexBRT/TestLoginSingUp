@@ -33,36 +33,109 @@
     </nav>
 
     <main class="container page-shell form-page">
-        <section class="form-card">
+        <section class="form-card download-matrix">
             <div class="form-heading">
                 <span>04</span>
-                <h1>Download Test</h1>
-                <p>Checks browser download behavior for JavaScript and PDF files.</p>
+                <h1>PDF Download Test Matrix</h1>
+                <p>Checks direct, viewer, embedded, redirect, blob, and large PDF download behavior.</p>
+            </div>
+
+            <div class="test-note">
+                <strong>Bug focus:</strong>
+                RF-Android PDF downloads that stay at 0% or do not start after the PDF opens in the browser.
             </div>
 
             <div class="download-list">
                 <a href="./test.js" download="test.js" class="download-row">
                     <span>
                         <strong>test.js</strong>
-                        <small>JavaScript file</small>
+                        <small>Baseline JavaScript file download.</small>
                     </span>
                     <span class="btn btn-primary">Download JS File</span>
                 </a>
 
                 <a href="./test.pdf" download="test.pdf" class="download-row">
                     <span>
-                        <strong>test.pdf</strong>
-                        <small>PDF document</small>
+                        <strong>Direct PDF download</strong>
+                        <small>Same-origin PDF link with the download attribute.</small>
                     </span>
-                    <span class="btn btn-outline-primary">Download PDF File</span>
+                    <span class="btn btn-primary">Download PDF File</span>
+                </a>
+
+                <a href="./test.pdf" class="download-row">
+                    <span>
+                        <strong>Open PDF in browser</strong>
+                        <small>Same PDF without the download attribute.</small>
+                    </span>
+                    <span class="btn btn-outline-primary">Open PDF</span>
+                </a>
+
+                <a href="./test.pdf" target="_blank" rel="noopener" class="download-row">
+                    <span>
+                        <strong>Open PDF in new tab</strong>
+                        <small>Tests target blank / new WebView handling.</small>
+                    </span>
+                    <span class="btn btn-outline-primary">Open New Tab</span>
+                </a>
+
+                <button type="button" class="download-row download-row-button" data-blob-download="./test.pdf" data-download-name="blob-test.pdf">
+                    <span>
+                        <strong>Blob PDF download</strong>
+                        <small>Fetches the PDF, creates a Blob URL, then downloads it.</small>
+                    </span>
+                    <span class="btn btn-outline-primary">Download Blob PDF</span>
+                </button>
+
+                <button type="button" class="download-row download-row-button" data-blob-download="./large-test.pdf" data-download-name="large-blob-test.pdf">
+                    <span>
+                        <strong>Large Blob PDF download</strong>
+                        <small>Fetches the large PDF as a Blob before triggering download.</small>
+                    </span>
+                    <span class="btn btn-outline-primary">Download Large Blob</span>
+                </button>
+
+                <a href="./pdf_redirect.html" class="download-row">
+                    <span>
+                        <strong>Redirect to PDF</strong>
+                        <small>Intermediate page automatically redirects to the PDF.</small>
+                    </span>
+                    <span class="btn btn-outline-primary">Open Redirect Flow</span>
+                </a>
+
+                <a href="./large-test.pdf" download="large-test.pdf" class="download-row">
+                    <span>
+                        <strong>Large PDF download</strong>
+                        <small>Multi-megabyte PDF to expose progress stuck at 0% behavior.</small>
+                    </span>
+                    <span class="btn btn-outline-primary">Download Large PDF</span>
                 </a>
             </div>
+
+            <div class="pdf-preview-panel">
+                <div class="pdf-preview-heading">
+                    <h2>Embedded PDF preview</h2>
+                    <a href="./test.pdf" download="embedded-preview-test.pdf" class="btn btn-outline-primary">Download Preview PDF</a>
+                </div>
+                <iframe src="./test.pdf" title="Embedded PDF preview"></iframe>
+            </div>
+
+            <div class="message-panel" data-download-message aria-live="polite">No blob download test has run yet.</div>
         </section>
 
         <aside class="side-panel">
             <span class="account-label">Saved test account</span>
             <strong data-account-summary>No test account saved</strong>
             <p data-account-detail>Download tests do not modify the saved account.</p>
+            <div class="case-list">
+                <strong>Suggested RF-Android pass</strong>
+                <ol>
+                    <li>Run direct PDF download.</li>
+                    <li>Open PDF, then use viewer download.</li>
+                    <li>Run small and large blob flows.</li>
+                    <li>Run redirect flow.</li>
+                    <li>Run large PDF and watch progress.</li>
+                </ol>
+            </div>
             <button class="btn btn-sm btn-outline-secondary" type="button" data-clear-account>Clear</button>
         </aside>
     </main>

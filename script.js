@@ -46,6 +46,16 @@
         panel.className = `message-panel ${type || ""}`.trim();
     }
 
+    function showDownloadMessage(text, type) {
+        const panel = document.querySelector("[data-download-message]");
+        if (!panel) {
+            return;
+        }
+
+        panel.textContent = text;
+        panel.className = `message-panel ${type || ""}`.trim();
+    }
+
     function isStrongEnough(password) {
         return password.length >= 8;
     }
@@ -136,6 +146,37 @@
         form.reset();
     }
 
+    async function handleBlobDownload(event) {
+        const button = event.currentTarget;
+        const url = button.dataset.blobDownload;
+        const downloadName = button.dataset.downloadName || "blob-test.pdf";
+
+        try {
+            showDownloadMessage("Creating Blob URL for PDF download...", "warning");
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+
+            const blob = await response.blob();
+            const objectUrl = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = objectUrl;
+            link.download = downloadName;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+
+            window.setTimeout(function () {
+                URL.revokeObjectURL(objectUrl);
+            }, 1000);
+
+            showDownloadMessage(`Blob PDF download triggered (${Math.round(blob.size / 1024)} KB).`, "success");
+        } catch (error) {
+            showDownloadMessage(`Blob PDF download failed: ${error.message}`, "error");
+        }
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
         renderAccountState();
 
@@ -158,5 +199,9 @@
         if (passwordResetForm) {
             passwordResetForm.addEventListener("submit", handlePasswordReset);
         }
+
+        document.querySelectorAll("[data-blob-download]").forEach((button) => {
+            button.addEventListener("click", handleBlobDownload);
+        });
     });
 })();
