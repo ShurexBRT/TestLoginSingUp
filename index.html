@@ -1,25 +1,77 @@
-<!-- /mnt/data/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <!-- Bootstrap CSS -->
+    <title>Autofill Test Lab</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-
-    <div class="container">
-        <h1>Welcome to Your Test Page My Roboform brethren</h1>
-        <div class="button-group">
-            <a href="login.html" class="button">Login</a>
-            <a href="signup.html" class="button">Sign Up</a>
-            <a href="password_reset.html" class="button">Password Reset</a>
-            <a href="./download.html" class="button">Download Test</a>
+<body data-page="home">
+    <nav class="navbar navbar-expand-lg fixed-top app-nav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Autofill Test Lab</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="signup.html">Sign Up</a></li>
+                    <li class="nav-item"><a class="nav-link" href="password_reset.html">Reset Password</a></li>
+                    <li class="nav-item"><a class="nav-link" href="download.html">Download Test</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </nav>
+
+    <main class="container page-shell">
+        <section class="page-header">
+            <div>
+                <h1>Autofill Test Lab</h1>
+                <p>Small static test surface for RoboForm login, signup, password reset, and download checks.</p>
+            </div>
+            <div class="account-panel" aria-live="polite">
+                <span class="account-label">Saved test account</span>
+                <strong data-account-summary>No test account saved</strong>
+                <button class="btn btn-sm btn-outline-secondary" type="button" data-clear-account>Clear</button>
+            </div>
+        </section>
+
+        <section class="scenario-grid" aria-label="Test scenarios">
+            <a class="scenario-card" href="login.html">
+                <span class="scenario-index">01</span>
+                <h2>Login Test</h2>
+                <p>Username and current password autofill check.</p>
+            </a>
+            <a class="scenario-card" href="signup.html">
+                <span class="scenario-index">02</span>
+                <h2>Sign Up Test</h2>
+                <p>Name, email, and new password save check.</p>
+            </a>
+            <a class="scenario-card" href="password_reset.html">
+                <span class="scenario-index">03</span>
+                <h2>Password Reset Test</h2>
+                <p>Current password and new password update check.</p>
+            </a>
+            <a class="scenario-card" href="download.html">
+                <span class="scenario-index">04</span>
+                <h2>Download Test</h2>
+                <p>JavaScript and PDF file download behavior check.</p>
+            </a>
+        </section>
+
+        <section class="status-card">
+            <div>
+                <h2>Current Test State</h2>
+                <p data-account-detail>No local test account exists yet. Create one on the sign up page.</p>
+            </div>
+            <a class="btn btn-primary" href="signup.html">Create Test Account</a>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

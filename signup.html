@@ -1,67 +1,71 @@
-<!-- /mnt/data/signup.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    <!-- Bootstrap CSS -->
+    <title>Sign Up Test</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-   
-
-   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+<body data-page="signup">
+    <nav class="navbar navbar-expand-lg fixed-top app-nav">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Test Page</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="index.html">Autofill Test Lab</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="signup.html">Sign Up</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="signup.html">Sign Up</a></li>
                     <li class="nav-item"><a class="nav-link" href="password_reset.html">Reset Password</a></li>
                     <li class="nav-item"><a class="nav-link" href="download.html">Download Test</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    
-    
-    
-    
-    
-    <div class="container mt-5 pt-5">
-        <div class="card shadow-lg mx-auto" style="max-width: 400px;">
-            <div class="card-body">
-                <h2 class="text-center">Sign up</h2>
-                <form class="text-center">
-                    <div class="mb-3">
-                       <!-- <label class="form-label">Name</label>-->
-                        <input type="Name" class="form-control" placeholder="Enter your name" required>
-                    </div>
-                    <div class="mb-3">
-                       <!-- <label class="form-label">Email</label>-->
-                        <input type="email" class="form-control" placeholder="Enter your email" required>
-                    </div>
-                    <div class="mb-3">
-                       <!-- <label class="form-label">Password</label> -->
-                        <input type="password" class="form-control" placeholder="Enter your password" required>
-                    </div>
-                    
-                    <div class="mb-3">
-                       <!-- <label class="form-label">ConfirmPassword</label>-->
-                        <input type="password" class="form-control" placeholder="Confirm your password" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Sign Up</button>
-                </form>
+
+    <main class="container page-shell form-page">
+        <section class="form-card">
+            <div class="form-heading">
+                <span>02</span>
+                <h1>Sign Up Test</h1>
+                <p>Creates a local test account for autofill save prompts.</p>
             </div>
-        </div>
-    </div>
-     <!-- Bootstrap JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+            <form id="signupForm" class="test-form" novalidate>
+                <div class="field-group">
+                    <label for="signupName">Full name</label>
+                    <input id="signupName" name="name" type="text" class="form-control" autocomplete="name" placeholder="Test User" required>
+                </div>
+                <div class="field-group">
+                    <label for="signupEmail">Email address</label>
+                    <input id="signupEmail" name="email" type="email" class="form-control" autocomplete="email" placeholder="test@example.com" required>
+                </div>
+                <div class="field-group">
+                    <label for="signupPassword">Password</label>
+                    <input id="signupPassword" name="password" type="password" class="form-control" autocomplete="new-password" placeholder="New password" required>
+                </div>
+                <div class="field-group">
+                    <label for="signupConfirmPassword">Confirm password</label>
+                    <input id="signupConfirmPassword" name="confirmPassword" type="password" class="form-control" autocomplete="new-password" placeholder="Confirm password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Save Test Account</button>
+            </form>
+
+            <div class="message-panel" data-form-message aria-live="polite">No account has been saved yet.</div>
+        </section>
+
+        <aside class="side-panel">
+            <span class="account-label">Saved test account</span>
+            <strong data-account-summary>No test account saved</strong>
+            <p data-account-detail>This account is stored only in this browser.</p>
+            <button class="btn btn-sm btn-outline-secondary" type="button" data-clear-account>Clear</button>
+        </aside>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

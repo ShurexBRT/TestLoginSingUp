@@ -1,27 +1,23 @@
-<!-- /mnt/data/login.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <!-- Bootstrap CSS -->
+    <title>Login Test</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-   
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+<body data-page="login">
+    <nav class="navbar navbar-expand-lg fixed-top app-nav">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Test Page</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="index.html">Autofill Test Lab</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
                     <li class="nav-item"><a class="nav-link" href="signup.html">Sign Up</a></li>
                     <li class="nav-item"><a class="nav-link" href="password_reset.html">Reset Password</a></li>
                     <li class="nav-item"><a class="nav-link" href="download.html">Download Test</a></li>
@@ -29,30 +25,39 @@
             </div>
         </div>
     </nav>
-    
-    
-    
-    
-    
-    <div class="container mt-5 pt-5">
-        <div class="card shadow-lg mx-auto" style="max-width: 400px;">
-            <div class="card-body">
-                <h2 class="text-center">Login</h2>
-                <form class="text-center">
-                    <div class="mb-3">
-                       <!-- <label class="form-label">Email</label>-->
-                        <input type="email" class="form-control" placeholder="Enter your email" required>
-                    </div>
-                    <div class="mb-3">
-                        <!--<label class="form-label">Password</label>-->
-                        <input type="password" class="form-control" placeholder="Enter your password" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Login</button>
-                </form>
+
+    <main class="container page-shell form-page">
+        <section class="form-card">
+            <div class="form-heading">
+                <span>01</span>
+                <h1>Login Test</h1>
+                <p>Checks username and current password autofill behavior.</p>
             </div>
-        </div>
-    </div>
-    <!-- Bootstrap JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
+
+            <form id="loginForm" class="test-form" novalidate>
+                <div class="field-group">
+                    <label for="loginEmail">Email address</label>
+                    <input id="loginEmail" name="email" type="email" class="form-control" autocomplete="username" placeholder="test@example.com" required>
+                </div>
+                <div class="field-group">
+                    <label for="loginPassword">Password</label>
+                    <input id="loginPassword" name="password" type="password" class="form-control" autocomplete="current-password" placeholder="Current password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Run Login Test</button>
+            </form>
+
+            <div class="message-panel" data-form-message aria-live="polite">No login test has run yet.</div>
+        </section>
+
+        <aside class="side-panel">
+            <span class="account-label">Saved test account</span>
+            <strong data-account-summary>No test account saved</strong>
+            <p data-account-detail>Create a test account first to check matching credentials.</p>
+            <button class="btn btn-sm btn-outline-secondary" type="button" data-clear-account>Clear</button>
+        </aside>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Download Test</title>
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-
-<body class="bg-light">
-
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+<body data-page="download">
+    <nav class="navbar navbar-expand-lg fixed-top app-nav">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Test Page</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="index.html">Autofill Test Lab</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -31,39 +26,42 @@
         </div>
     </nav>
 
-    <!-- MAIN CONTENT -->
-    <div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh; padding-top: 80px;">
-        <div class="card shadow-lg p-4" style="max-width: 420px; width: 100%; border-radius: 15px;">
-            
-            <div class="card-body text-center">
-                <h2 class="mb-3">Download Test File</h2>
-                <p class="text-muted mb-4">
-                    Click the button below to download a JavaScript test file.
-                </p>
-
-                <a href="./test.js" download="test.js" class="btn btn-primary w-100 mb-3">
-                    Download JS File
-                </a>
-
-                <a href="./test.pdf" download="test.pdf" class="btn btn-outline-primary w-100 mb-3">
-                    Download PDF File
-                </a>
-
-                <small class="text-muted">
-                    This file is used for testing browser download behavior and security warnings.
-                </small>
+    <main class="container page-shell form-page">
+        <section class="form-card">
+            <div class="form-heading">
+                <span>04</span>
+                <h1>Download Test</h1>
+                <p>Checks browser download behavior for JavaScript and PDF files.</p>
             </div>
 
-        </div>
-    </div>
+            <div class="download-list">
+                <a href="./test.js" download="test.js" class="download-row">
+                    <span>
+                        <strong>test.js</strong>
+                        <small>JavaScript file</small>
+                    </span>
+                    <span class="btn btn-primary">Download JS File</span>
+                </a>
 
-    <!-- FOOTER -->
-    <footer class="text-center mt-5 mb-3 text-muted">
-        <small>Test Project • Download Page</small>
-    </footer>
+                <a href="./test.pdf" download="test.pdf" class="download-row">
+                    <span>
+                        <strong>test.pdf</strong>
+                        <small>PDF document</small>
+                    </span>
+                    <span class="btn btn-outline-primary">Download PDF File</span>
+                </a>
+            </div>
+        </section>
 
-    <!-- Bootstrap JS -->
+        <aside class="side-panel">
+            <span class="account-label">Saved test account</span>
+            <strong data-account-summary>No test account saved</strong>
+            <p data-account-detail>Download tests do not modify the saved account.</p>
+            <button class="btn btn-sm btn-outline-secondary" type="button" data-clear-account>Clear</button>
+        </aside>
+    </main>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>

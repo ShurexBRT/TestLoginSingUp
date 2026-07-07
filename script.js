@@ -1,34 +1,162 @@
-// /mnt/data/script.js
+(function () {
+    const storageKey = "autofillTestAccount";
 
-document.getElementById('passwordResetForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const email = document.getElementById('email').value;
-    const newPassword = document.getElementById('newPassword').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-
-    if (newPassword !== confirmPassword) {
-        alert('Passwords do not match!');
-        return;
+    function getAccount() {
+        try {
+            return JSON.parse(localStorage.getItem(storageKey));
+        } catch (error) {
+            return null;
+        }
     }
 
-    if (newPassword.length < 8) {
-        alert('Password must be at least 8 characters long.');
-        return;
+    function saveAccount(account) {
+        localStorage.setItem(storageKey, JSON.stringify(account));
+        renderAccountState();
     }
 
-    //alert('Password reset successful for: ' + email); za sada zakomentarisan alert
+    function clearAccount() {
+        localStorage.removeItem(storageKey);
+        renderAccountState();
+        showMessage("Saved test account cleared.", "warning");
+    }
 
-    // Simulate form submission
-    this.reset();
-});
-// /mnt/data/script.js
+    function renderAccountState() {
+        const account = getAccount();
+        const summaries = document.querySelectorAll("[data-account-summary]");
+        const details = document.querySelectorAll("[data-account-detail]");
 
-document.addEventListener("DOMContentLoaded", function () {
-    const hamburger = document.querySelector(".hamburger-menu");
-    const navLinks = document.querySelector(".nav-links");
+        summaries.forEach((summary) => {
+            summary.textContent = account ? account.email : "No test account saved";
+        });
 
-    hamburger.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
+        details.forEach((detail) => {
+            detail.textContent = account
+                ? `${account.name} is saved locally for autofill checks.`
+                : "No local test account exists yet. Create one on the sign up page.";
+        });
+    }
+
+    function showMessage(text, type) {
+        const panel = document.querySelector("[data-form-message]");
+        if (!panel) {
+            return;
+        }
+
+        panel.textContent = text;
+        panel.className = `message-panel ${type || ""}`.trim();
+    }
+
+    function isStrongEnough(password) {
+        return password.length >= 8;
+    }
+
+    function handleSignup(event) {
+        event.preventDefault();
+
+        const form = event.currentTarget;
+        const name = form.elements.name.value.trim();
+        const email = form.elements.email.value.trim();
+        const password = form.elements.password.value;
+        const confirmPassword = form.elements.confirmPassword.value;
+
+        if (!name || !email || !password || !confirmPassword) {
+            showMessage("Fill every field before saving the test account.", "warning");
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            showMessage("Passwords do not match.", "error");
+            return;
+        }
+
+        if (!isStrongEnough(password)) {
+            showMessage("Password must be at least 8 characters long.", "error");
+            return;
+        }
+
+        saveAccount({ name, email, password });
+        showMessage("Test account saved locally.", "success");
+        form.reset();
+    }
+
+    function handleLogin(event) {
+        event.preventDefault();
+
+        const account = getAccount();
+        const form = event.currentTarget;
+        const email = form.elements.email.value.trim();
+        const password = form.elements.password.value;
+
+        if (!account) {
+            showMessage("No saved test account exists yet.", "warning");
+            return;
+        }
+
+        if (email === account.email && password === account.password) {
+            showMessage("Login simulation successful.", "success");
+            form.reset();
+            return;
+        }
+
+        showMessage("Login simulation failed. Email or password does not match the saved account.", "error");
+    }
+
+    function handlePasswordReset(event) {
+        event.preventDefault();
+
+        const account = getAccount();
+        const form = event.currentTarget;
+        const email = form.elements.email.value.trim();
+        const oldPassword = form.elements.oldPassword.value;
+        const newPassword = form.elements.newPassword.value;
+        const confirmPassword = form.elements.confirmPassword.value;
+
+        if (!account) {
+            showMessage("No saved test account exists yet.", "warning");
+            return;
+        }
+
+        if (email !== account.email || oldPassword !== account.password) {
+            showMessage("Current credentials do not match the saved test account.", "error");
+            return;
+        }
+
+        if (newPassword !== confirmPassword) {
+            showMessage("New passwords do not match.", "error");
+            return;
+        }
+
+        if (!isStrongEnough(newPassword)) {
+            showMessage("New password must be at least 8 characters long.", "error");
+            return;
+        }
+
+        saveAccount({ ...account, password: newPassword });
+        showMessage("Test account password updated locally.", "success");
+        form.reset();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        renderAccountState();
+
+        document.querySelectorAll("[data-clear-account]").forEach((button) => {
+            button.addEventListener("click", clearAccount);
+        });
+
+        const signupForm = document.getElementById("signupForm");
+        const loginForm = document.getElementById("loginForm");
+        const passwordResetForm = document.getElementById("passwordResetForm");
+
+        if (signupForm) {
+            signupForm.addEventListener("submit", handleSignup);
+        }
+
+        if (loginForm) {
+            loginForm.addEventListener("submit", handleLogin);
+        }
+
+        if (passwordResetForm) {
+            passwordResetForm.addEventListener("submit", handlePasswordReset);
+        }
     });
-});
+})();

@@ -1,166 +1,387 @@
-/* /mnt/data/styles.css */
+:root {
+    --bg: #f5f7fb;
+    --surface: #ffffff;
+    --surface-soft: #f8fbff;
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --text: #172033;
+    --muted: #647084;
+    --border: #d9e2ef;
+    --success: #15803d;
+    --success-bg: #ecfdf3;
+    --error: #dc2626;
+    --error-bg: #fff1f2;
+    --warning: #b45309;
+    --warning-bg: #fffbeb;
+    --shadow: 0 18px 50px rgba(23, 32, 51, 0.08);
+}
 
-/* Reset osnovnih stilova */
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
-/* Popravljen stil za telo stranice */
 body {
-    background: #f9fafc;
-    color: #333;
-    padding-top: 70px; /* Dodajemo padding da sadržaj ne bude ispod navigacije */
-}
-
-/* Stilizacija navigacije */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #1a73e8; /* Plava boja */
-    padding: 15px 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-
-/* Kontejner za logo i linkove */
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    max-width: 1200px;
-}
-
-/* Logo */
-.nav-logo {
-    font-size: 22px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* Lista linkova */
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 15px;
+    min-height: 100vh;
     margin: 0;
-    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 76px;
 }
 
-/* Stilizacija linkova */
+.app-nav {
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 8px 30px rgba(23, 32, 51, 0.06);
+    backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+    color: var(--primary);
+}
+
+.navbar-toggler {
+    border-color: var(--border);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2823, 32, 51, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
 .nav-link {
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link.active {
+    color: var(--primary);
+    background: #eef4ff;
+}
+
+.page-shell {
+    padding: 36px 16px 56px;
+}
+
+.page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 28px;
+    margin-bottom: 28px;
+}
+
+.page-header h1,
+.form-heading h1 {
+    margin: 0;
+    color: var(--text);
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.page-header p,
+.form-heading p,
+.scenario-card p,
+.status-card p,
+.side-panel p {
+    margin: 10px 0 0;
+    color: var(--muted);
+    line-height: 1.55;
+}
+
+.account-panel,
+.side-panel,
+.status-card,
+.form-card,
+.scenario-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.account-panel {
+    width: min(100%, 330px);
+    padding: 18px;
+    border-radius: 8px;
+}
+
+.account-label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+[data-account-summary] {
+    display: block;
+    margin-bottom: 12px;
     font-size: 16px;
-    transition: 0.3s ease-in-out;
-    border-radius: 5px;
 }
 
-.nav-link:hover {
-    background: rgba(255, 255, 255, 0.3);
+.scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
 }
 
-/* Dugme za mobilni meni */
-.hamburger-menu {
-    display: none;
-    font-size: 28px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-
-/* Mobilna verzija navigacije */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background: #1a73e8;
-        width: 200px;
-        text-align: center;
-        padding: 10px;
-        border-radius: 5px;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .hamburger-menu {
-        display: block;
-    }
-}
-
-/* Dugmad i polja za unos */
-.button {
-    display: inline-block;
-    background: #1a73e8;
-    color: white;
+.scenario-card {
+    min-height: 190px;
+    padding: 22px;
+    color: inherit;
     text-decoration: none;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out;
+    border-radius: 8px;
+    transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 
-.button:hover {
-    background: #1664c1;
+.scenario-card:hover,
+.scenario-card:focus {
+    color: inherit;
+    border-color: #a7bff2;
+    box-shadow: 0 22px 60px rgba(37, 99, 235, 0.13);
+    transform: translateY(-2px);
 }
 
-input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.scenario-index,
+.form-heading span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 30px;
+    margin-bottom: 18px;
+    color: var(--primary);
+    background: #eef4ff;
+    border: 1px solid #cfddff;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 800;
 }
 
-input:focus {
-    border-color: #1a73e8;
-    box-shadow: 0 0 4px rgba(26, 115, 232, 0.5);
-}
-/* /mnt/data/styles.css */
-
-body {
-    background: #f9fafc;
-    padding-top: 80px; /* Ostavlja prostor ispod fiksne navigacije */
+.scenario-card h2,
+.status-card h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 800;
 }
 
-.card {
-    border-radius: 12px;
+.status-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 16px;
+    padding: 22px;
+    border-radius: 8px;
+}
+
+.form-page {
+    display: grid;
+    grid-template-columns: minmax(0, 560px) minmax(240px, 320px);
+    align-items: start;
+    justify-content: center;
+    gap: 22px;
+}
+
+.form-card,
+.side-panel {
+    border-radius: 8px;
+}
+
+.form-card {
+    padding: 30px;
+}
+
+.form-heading {
+    margin-bottom: 24px;
+}
+
+.form-heading h1 {
+    font-size: 32px;
+}
+
+.test-form {
+    display: grid;
+    gap: 16px;
+}
+
+.field-group {
+    display: grid;
+    gap: 7px;
+}
+
+.field-group label {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.form-control {
+    min-height: 46px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 15px;
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.14);
+}
+
+.btn {
+    min-height: 42px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 800;
 }
 
 .btn-primary {
-    background-color: #1a73e8;
-    border: none;
+    background: var(--primary);
+    border-color: var(--primary);
 }
 
-.btn-primary:hover {
-    background-color: #1664c1;
+.btn-primary:hover,
+.btn-primary:focus {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
 }
-/* Ograničava širinu input polja */
-.form-control {
-    max-width: 300px;
-    margin: 0 auto; /* Centriranje input polja */
+
+.btn-outline-primary {
+    color: var(--primary);
+    border-color: #b9ccff;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    background: #eef4ff;
+    border-color: var(--primary);
+    color: var(--primary-hover);
+}
+
+.side-panel {
+    padding: 20px;
+}
+
+.message-panel {
+    margin-top: 18px;
+    padding: 14px 16px;
+    color: var(--muted);
+    background: var(--surface-soft);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.message-panel.success {
+    color: var(--success);
+    background: var(--success-bg);
+    border-color: #bbf7d0;
+}
+
+.message-panel.error {
+    color: var(--error);
+    background: var(--error-bg);
+    border-color: #fecdd3;
+}
+
+.message-panel.warning {
+    color: var(--warning);
+    background: var(--warning-bg);
+    border-color: #fde68a;
+}
+
+.download-list {
+    display: grid;
+    gap: 14px;
+}
+
+.download-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px;
+    color: inherit;
+    text-decoration: none;
+    background: var(--surface-soft);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.download-row:hover,
+.download-row:focus {
+    color: inherit;
+    border-color: #a7bff2;
+}
+
+.download-row strong,
+.download-row small {
     display: block;
 }
 
-/* Centriranje forme */
-form {
-    text-align: center;
+.download-row small {
+    margin-top: 4px;
+    color: var(--muted);
 }
 
+@media (max-width: 991px) {
+    .page-header,
+    .status-card {
+        flex-direction: column;
+    }
+
+    .account-panel {
+        width: 100%;
+    }
+
+    .scenario-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .form-page {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 575px) {
+    body {
+        padding-top: 70px;
+    }
+
+    .page-shell {
+        padding: 24px 12px 40px;
+    }
+
+    .page-header h1,
+    .form-heading h1 {
+        font-size: 30px;
+    }
+
+    .scenario-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-card {
+        padding: 22px;
+    }
+
+    .download-row {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}
