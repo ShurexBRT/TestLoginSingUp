@@ -37,9 +37,21 @@ body {
 }
 
 .navbar-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     color: var(--text);
     font-size: 18px;
     font-weight: 800;
+}
+
+.brand-icon {
+    width: 34px;
+    height: 34px;
+    border: 2px solid #dbeafe;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 14px rgba(23, 32, 51, 0.12);
 }
 
 .navbar-brand:hover,
