@@ -446,6 +446,11 @@ body {
 .reading-list {
     display: grid;
     gap: 14px;
+    position: sticky;
+    top: 98px;
+    max-height: calc(100vh - 120px);
+    overflow: auto;
+    padding-right: 4px;
 }
 
 .reading-card {
@@ -513,9 +518,24 @@ body {
 }
 
 .reader-panel p {
+    margin-bottom: 18px;
     color: var(--text);
     font-size: 17px;
     line-height: 1.75;
+}
+
+.reader-panel h3 {
+    margin: 30px 0 12px;
+    color: var(--text);
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.reader-panel hr {
+    margin: 28px 0;
+    border: 0;
+    border-top: 1px solid var(--border);
+    opacity: 1;
 }
 
 @media (max-width: 991px) {
@@ -538,6 +558,13 @@ body {
 
     .reading-layout {
         grid-template-columns: 1fr;
+    }
+
+    .reading-list {
+        position: static;
+        max-height: none;
+        overflow: visible;
+        padding-right: 0;
     }
 }
 
