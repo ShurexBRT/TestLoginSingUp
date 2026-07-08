@@ -177,6 +177,20 @@
         }
     }
 
+    function activateReadingArticle(card) {
+        const targetId = card.dataset.readingCard;
+        const cards = document.querySelectorAll("[data-reading-card]");
+        const articles = document.querySelectorAll("[data-reading-article]");
+
+        cards.forEach((item) => {
+            item.classList.toggle("active", item === card);
+        });
+
+        articles.forEach((article) => {
+            article.hidden = article.id !== targetId;
+        });
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
         renderAccountState();
 
@@ -202,6 +216,12 @@
 
         document.querySelectorAll("[data-blob-download]").forEach((button) => {
             button.addEventListener("click", handleBlobDownload);
+        });
+
+        document.querySelectorAll("[data-reading-card]").forEach((card) => {
+            card.addEventListener("click", function () {
+                activateReadingArticle(card);
+            });
         });
     });
 })();

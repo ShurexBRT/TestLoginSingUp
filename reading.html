@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="reading">
+    <nav class="navbar navbar-expand-lg fixed-top app-nav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="assets/icons/site-icon-64.png" alt="" class="brand-icon">Autofill Test Lab</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="signup.html">Sign Up</a></li>
+                    <li class="nav-item"><a class="nav-link" href="password_reset.html">Reset Password</a></li>
+                    <li class="nav-item"><a class="nav-link" href="download.html">Download Test</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="reading.html">Reading</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container page-shell reading-page">
+        <section class="page-header">
+            <div>
+                <h1>Reading</h1>
+                <p>Small card-based library for notes, reference text, and longer reading material.</p>
+            </div>
+        </section>
+
+        <section class="reading-layout" aria-label="Reading library">
+            <div class="reading-list" aria-label="Reading cards">
+                <button class="reading-card active" type="button" data-reading-card="reading-placeholder">
+                    <span class="scenario-index">01</span>
+                    <strong>Placeholder Text</strong>
+                    <small>Draft slot for the first text you will send later.</small>
+                </button>
+
+                <button class="reading-card" type="button" data-reading-card="reading-empty">
+                    <span class="scenario-index">02</span>
+                    <strong>Next Text Slot</strong>
+                    <small>Reserved card for another reading entry.</small>
+                </button>
+            </div>
+
+            <article class="reader-panel" id="reading-placeholder" data-reading-article>
+                <div class="reader-meta">Reading entry 01</div>
+                <h2>Placeholder Text</h2>
+                <p>
+                    This is a temporary reading entry. Send the first real text and this card can become the actual article.
+                </p>
+                <p>
+                    The layout is ready for longer text: paragraphs, notes, QA context, reproduction steps, or support references.
+                </p>
+            </article>
+
+            <article class="reader-panel" id="reading-empty" data-reading-article hidden>
+                <div class="reader-meta">Reading entry 02</div>
+                <h2>Next Text Slot</h2>
+                <p>
+                    This card is reserved for the next text. It can be replaced with any longer note or reference material.
+                </p>
+            </article>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

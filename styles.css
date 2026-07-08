@@ -146,7 +146,7 @@ body {
 
 .scenario-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 16px;
 }
 
@@ -432,6 +432,92 @@ body {
     flex-wrap: wrap;
 }
 
+.reading-page .page-header {
+    margin-bottom: 20px;
+}
+
+.reading-layout {
+    display: grid;
+    grid-template-columns: minmax(240px, 340px) minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.reading-list {
+    display: grid;
+    gap: 14px;
+}
+
+.reading-card {
+    width: 100%;
+    min-height: 150px;
+    padding: 20px;
+    color: inherit;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    text-align: left;
+    transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.reading-card:hover,
+.reading-card:focus,
+.reading-card.active {
+    border-color: #a7bff2;
+    box-shadow: 0 22px 60px rgba(37, 99, 235, 0.13);
+}
+
+.reading-card:hover,
+.reading-card:focus {
+    transform: translateY(-2px);
+}
+
+.reading-card strong,
+.reading-card small {
+    display: block;
+}
+
+.reading-card strong {
+    font-size: 18px;
+}
+
+.reading-card small {
+    margin-top: 8px;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+.reader-panel {
+    min-height: 420px;
+    padding: 30px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.reader-meta {
+    margin-bottom: 12px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.reader-panel h2 {
+    margin: 0 0 18px;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.reader-panel p {
+    color: var(--text);
+    font-size: 17px;
+    line-height: 1.75;
+}
+
 @media (max-width: 991px) {
     .page-header,
     .status-card {
@@ -447,6 +533,10 @@ body {
     }
 
     .form-page {
+        grid-template-columns: 1fr;
+    }
+
+    .reading-layout {
         grid-template-columns: 1fr;
     }
 }
